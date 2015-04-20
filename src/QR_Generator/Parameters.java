@@ -1,7 +1,7 @@
 package QR_Generator;
 
-public class Parameters {
-	private String ECLevel = "L";
+public class Parameters extends qrcode {
+	private String ECLevel = "";
 	//Level L (Low) 	7%  of codewords can be restored.
 	//Level M (Medium) 	15% of codewords can be restored.
 	//Level Q (Quartile)25% of codewords can be restored.
