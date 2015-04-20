@@ -2,7 +2,7 @@ package QR_Generator;
 
 public class Size extends qrcode {
 	private int dimentions;
-	public void qrcodeWith(String data) {
+	public Size(String data) {
 		if (data.length() <= 14) {
 			this.dimentions = 21;
 		} else if (data.length() <= 26) {
@@ -31,6 +31,7 @@ public class Size extends qrcode {
 	}
 	
 	public int getDimentions() {
+		System.out.println(dimentions);//...
 		return dimentions;
 	}
 }
