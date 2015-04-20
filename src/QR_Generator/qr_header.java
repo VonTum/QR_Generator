@@ -62,6 +62,30 @@ public class qr_header extends qrcode {
 				System.out.println("");
 			}
 		}
+		
+		//Formatting information Data
+		int formatInfo = 0;
+		String ECInfo = parameters.getECLevel();
+		
+			//Formatting info: Error correction
+			switch(ECInfo) {
+				case "L":
+					formatInfo = 0b01;
+					break;
+				case "M":
+					formatInfo = 0b00;
+					break;
+				case "Q":
+					formatInfo = 0b11;
+					break;
+				case "H":
+					formatInfo = 0b10;
+					break;
+			default:
+					formatInfo = 0b01;
+				System.out.println("Errr: Error correction formatting info not found);");
+			}
+		
 		//applying fixed pattern
 		int fpd = dimention - 18;
         int j;
