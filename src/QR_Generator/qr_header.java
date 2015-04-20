@@ -7,26 +7,26 @@ public class qr_header extends qrcode {
 		int dimention = dimentions.getDimentions();
 		boolean[][] header = new boolean[9][9];
 		
-		for(int ai = 0; ai <= 9; ai++) {
-			for(int aj = 0; aj < 9; aj++) {
-				header[ai][aj] = true;
+		for(int i = 0; i <= 9; i++) {
+			for(int j = 0; j < 9; j++) {
+				header[i][j] = true;
 			}
 		}
-		for(int bi = 0; bi < 3; bi++) {
-			for(int bj = 0; bj < 3; bj++) {
-				header[bi][bj] =  false;
+		for(int i = 0; i < 3; i++) {
+			for(int j = 0; j < 3; j++) {
+				header[i][j] =  false;
 			}
 		}
-		for(int ci = 0; ci <= 7; ci++) {
-			header[ci][1] = false;
-			header[1][ci] = false;
-			header[ci][7] = false;
-			header[7][ci] = false;
+		for(int i = 0; i <= 7; i++) {
+			header[i][1] = false;
+			header[1][i] = false;
+			header[i][7] = false;
+			header[7][i] = false;
 		}
 		
-		for(int di = 0; di <= 9; di++) {
-			for(int dj = 0; dj < 9; dj++) {
-				System.out.print(header[di][dj] + ", ");
+		for(int i = 0; i <= 9; i++) {
+			for(int j = 0; j < 9; j++) {
+				System.out.print(header[i][j] + ", ");
 			}
 			System.out.println("");
 		}	
@@ -34,25 +34,25 @@ public class qr_header extends qrcode {
 		
 		
 		//puts header on to qr_code
-		for(int z = 0; z <= 2; z++) {
+		for(int i = 0; i <= 2; i++) {
 			int xxi = 0;
 			int xxj = 0;
 
-			if ( z ==1 ) {
+			if ( z == 1 ) {
 				xxi = dimention - 9;
 			} else {
 				xxj = dimention - 9;
 			}
-			for(int ei = 0; ei <= 9; ei++) {
-				for(int ej = 0; ej <= 9; ej++) {
-					used[ei+xxi][ej+xxj] = true;
-					qr_code[ei+xxi][ej+xxj] = header[ei][ej];
+			for(int j = 0; j <= 9; j++) {
+				for(int k = 0; k <= 9; k++) {
+					used[j+xxi][k+xxj] = true;
+					qr_code[j+xxi][k+xxj] = header[j][k];
 				}
 			}
 			String text;
-			for(int ti = 0; ti <= dimention; ti++) {
-				for(int tj = 0; tj <= dimention; tj++) {
-					if (used[ti][tj] == true) {
+			for(int j = 0; j <= dimention; j++) {
+				for(int k = 0; k <= dimention; k++) {
+					if (used[j][k] == true) {
 						text = "+";
 					} else {
 						text = "-";
@@ -64,20 +64,21 @@ public class qr_header extends qrcode {
 		}
 		//applying fixed pattern
 		int fpd = dimention - 18;
+        int j;
 		boolean fp = false;
-		for(int fi = 0; fi <= fpd; fi++) {
-			int fj = fi + fpd;
+		for(int i = 0; i <= fpd; i++) {
+			j += fpd;
 			if(fp == false) {
-				qr_code[9][fj] = true;
-				qr_code[fj][9] = true;
+				qr_code[9][j] = true;
+				qr_code[j][9] = true;
 				fp = true;
 			} else {
-				qr_code[9][fj] = false;
-				qr_code[fj][9] = false;
+				qr_code[9][j] = false;
+				qr_code[j][9] = false;
 				fp = false;
 			}
-			used[9][fj] = true;
-			used[fj][9] = true;
+			used[9][j] = true;
+			used[j][9] = true;
 		}
 	}
 }
