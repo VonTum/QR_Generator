@@ -3,11 +3,11 @@ package QR_Generator;
 public class qr_header extends qrcode {
 	public void header() {
 		// creates positioning pattern
-		Size dimentions = new Size();
+		Size dimentions = new Size(text);
 		int dimention = dimentions.getDimentions();
 		boolean[][] header = new boolean[9][9];
 		
-		for(int ai = 0; ai <= 9; ai++) {
+		for(int ai = 0; ai < 9; ai++) {
 			for(int aj = 0; aj < 9; aj++) {
 				header[ai][aj] = true;
 			}
@@ -24,7 +24,7 @@ public class qr_header extends qrcode {
 			header[7][ci] = false;
 		}
 		
-		for(int di = 0; di <= 9; di++) {
+		for(int di = 0; di < 9; di++) {
 			for(int dj = 0; dj < 9; dj++) {
 				System.out.print(header[di][dj] + ", ");
 			}
@@ -38,13 +38,16 @@ public class qr_header extends qrcode {
 			int xxi = 0;
 			int xxj = 0;
 
-			if ( z ==1 ) {
+			if ( z == 1 ) {
 				xxi = dimention - 9;
 			} else {
 				xxj = dimention - 9;
 			}
-			for(int ei = 0; ei <= 9; ei++) {
-				for(int ej = 0; ej <= 9; ej++) {
+			for(int ei = 0; ei < 9; ei++) {
+				for(int ej = 0; ej < 9; ej++) {
+					System.out.println("Dimentions: " + dimention + "  x: " + (ei+xxi) + " y: " + (ej+xxj));
+					
+					
 					used[ei+xxi][ej+xxj] = true;
 					qr_code[ei+xxi][ej+xxj] = header[ei][ej];
 				}
@@ -62,6 +65,11 @@ public class qr_header extends qrcode {
 				System.out.println("");
 			}
 		}
+		
+		
+		
+		
+		
 		//applying fixed pattern
 		int fpd = dimention - 18;
 		boolean fp = false;
