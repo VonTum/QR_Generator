@@ -4,9 +4,10 @@ import java.util.Scanner;
 
 public class qrcode {
  	public boolean[][] qr_code;
-	protected boolean[][] used;
+	public boolean[][] used;
 	int dimentions; // lengte van qr-code
 	public String text;
+	public Parameters parameters = new Parameters();
 	
 	public boolean[][] qrcode(String text) {
 		this.text = text;
